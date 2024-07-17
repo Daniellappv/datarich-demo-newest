@@ -41,20 +41,36 @@ This line chart depicts the trend in total CO2 emissions over time, highlighting
 
 The following bar chart compares emissions from different sources in 2010. It illustrates the relative contribution of each source to the total emissions.
 
+
 <VegaLite
-spec={{
-    $schema: "https://vega.github.io/schema/vega-lite/v5.json",
-    description: "Emissions distribution in 2010",
   data={{
-    url: "https://raw.githubusercontent.com/datopian/datarich-demo/main/data/global-co2-emissions-2010.csv",
+    table: [
+      {
+        x: 1850,
+        y: -0.418
+      },
+      {
+        x: 2020,
+        y: 0.923
+      }
+    ]
+  }}
+  spec={{
+    $schema: 'https://vega.github.io/schema/vega-lite/v4.json',
+    data: {
+      name: 'table'
     },
-    width: "container",
-    height: 250,
-    mark: "bar",
     encoding: {
-      x: { field: "Type", type: "nominal" },
-      y: { field: "Amount", type: "quantitative" }
+      x: {
+        field: 'x',
+        type: 'ordinal'
+      },
+      y: {
+        field: 'y',
+        type: 'quantitative'
+      }
     },
+    mark: 'bar'
   }}
 />
 
